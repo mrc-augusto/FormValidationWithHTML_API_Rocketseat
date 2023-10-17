@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  --primary-color: #fd951f;
+  --bg-color: #130f0d;
+  --text-color: #f0f0f5;
+  --light-color: rgba(255, 255, 255, 0.04);
+
+  font-size: 62.5%;
+}
+
+
+html {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  font-size: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+form{
+  background: rgba(255, 255, 255, 0.03);
+  width: 100%;
+  max-width: 50rem;
+  margin: 3.2rem auto;
+  padding: 3.2rem 6.4rem;
+  display: flex;
+  flex-direction: column;
+}  
+
+form h2{
+  margin-bottom: 3.2rem;
+}
+
+div.input{
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+input, button{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  padding: 1.6rem 0;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  background-color: transparent;
+  outline: none;
+
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+button{
+  margin-top: 1.6rem;
+  background-color: var(--primary-color);
+}
+
+input ~ label{
+  position: absolute;
+  top: 1.6rem;
+  left: 0;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  transition: .4s;
+}
+input:hover ~ label,
+input:focus ~ label,
+input:valid ~ label{
+  transform: translateY(-2.4rem);
+  font-size: 1.2rem;
+  letter-spacing: .2rem;
+}
+
+.input span.error{
+  display: flex;
+
+  padding: 0;
+
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.input span.error.active{
+  border: 1px solid red;
+  padding: 0.4rem;
+}
