@@ -9,15 +9,28 @@ function validateField(field){
         foundError = error;
       }
     }
-    return foundError
+    return foundError;
   }
 
+  function customMessage(typeError) {
+    const messages = {
+        text: {
+            valueMissing: "Por favor, preencha este campo"
+        },
+        email: {
+            valueMissing: "Email é obrigatório",
+            typeMismatch: "Por favor, preencha um email válido"
+        }
+    }
+
+    return messages[field.type][typeError]
+}
   function setCustomMessage(message){
     const spanError = field.parentNode.querySelector('span.error')
 
     if(message){
       spanError.classList.add('active');
-      spanError.innerHTML = 'Campo Obrigatório'
+      spanError.innerHTML = message;
     }else{
       spanError.classList.remove('active');
       spanError.innerHTML = '';
@@ -25,13 +38,20 @@ function validateField(field){
   };
 
   return function(){
-    if(verifyErrors()){
-      setCustomMessage('Campo Obrigatório');
+    const error = verifyErrors();
+
+    if(error){
+      const message = customMessage(error);
+      field.style.borderColor = 'red';
+      setCustomMessage(message);
     }else{
+      field.style.borderColor = 'green'
       setCustomMessage();
     };
   };
 };
+
+
 
 function customValidation(event){
   const field = event.target;
